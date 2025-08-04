@@ -23,7 +23,7 @@ class QuoteManager(private val context: Context) {
     private val prefs = context.getSharedPreferences("quotes_prefs", Context.MODE_PRIVATE)
     
     // Replace this URL with your GitHub Pages URL
-    private val quotesUrl = "https://[username].github.io/my-quotes-service/quotes.json"
+    private val quotesUrl = "https://Louisjo.github.io/my-quotes-service/quotes.json"
     
     suspend fun updateQuotes(): Boolean = withContext(Dispatchers.IO) {
         return@withContext try {
