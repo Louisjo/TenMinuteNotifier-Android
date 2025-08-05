@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         updateUI()
         
         // Request notification permission for Android 13+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= 33) {
             requestNotificationPermission()
         }
         
@@ -141,9 +141,9 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun hasNotificationPermission(): Boolean {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        return if (Build.VERSION.SDK_INT >= 33) {
             ContextCompat.checkSelfPermission(
-                this, Manifest.permission.POST_NOTIFICATIONS
+                this, "android.permission.POST_NOTIFICATIONS"
             ) == PackageManager.PERMISSION_GRANTED
         } else {
             true
@@ -151,8 +151,8 @@ class MainActivity : AppCompatActivity() {
     }
     
     private fun requestNotificationPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (Build.VERSION.SDK_INT >= 33) {
+            notificationPermissionLauncher.launch("android.permission.POST_NOTIFICATIONS")
         }
     }
     
